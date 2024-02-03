@@ -43,23 +43,19 @@ async def ops_login(user: dict = Depends(get_current_user)):
     return {"message": "Login successful for Ops user"}
 
 # Endpoint for Ops user upload
-# Endpoint for Ops user upload
 @app.post('/ops/upload')
 async def ops_upload(files: UploadFile = File(...), user: dict = Depends(get_current_user)):
     filename, file_extension = os.path.splitext(files.filename)
     allowed_extensions = ['.pptx', '.docx', '.xlsx']
     if file_extension.lower() not in allowed_extensions:
         raise HTTPException(status_code=400, detail="File type not allowed")
-    
     # Create directory if it doesn't exist
     os.makedirs("uploads", exist_ok=True)
-    
     # Save file
     file_id = str(uuid.uuid4())
     file_path = os.path.join("uploads", f"{file_id}_{filename}{file_extension}")
     with open(file_path, "wb") as buffer:
         buffer.write(await files.read())
-    
     # Add file information to the database
     await files_collection.insert_one({"filename": files.filename, "file_id": file_id, "user_id": str(user["_id"])})
     return {"message": "File uploaded successfully", "file_id": file_id}
@@ -68,7 +64,6 @@ async def ops_upload(files: UploadFile = File(...), user: dict = Depends(get_cur
 
 SECRET_KEY = 'jivnjernvkebnkenfierwbgirwgihbrihbv'
 def generate_secure_url(file_id: str) -> str:
-    # Define payload with file ID and expiration time
     payload = {
         "file_id": file_id,
         "exp": datetime.utcnow() + timedelta(hours=1)  # URL expiration time (e.g., 1 hour)
@@ -103,10 +98,8 @@ async def list_uploaded_files(user: dict = Depends(get_client_user)):
     # Execute the query and retrieve the files
     files_cursor = files_collection.find()
     files = await files_cursor.to_list(length=None)
-    
     # Extract relevant information from each file
     uploaded_files = [{"filename": file["filename"], "file_id": file["file_id"]} for file in files]
-    
     return {"uploaded_files": uploaded_files}
 
 
@@ -128,13 +121,10 @@ async def signup(user_info: UserSignup):
     existing_user = await users_collection.find_one({"username": user_info.username})
     if existing_user:
         raise HTTPException(status_code=400, detail="User already exists")
-
     # Generate token with user information
     token = serializer.dumps({"username": user_info.username, "password": user_info.password})
-    
     # Encrypt the token to create a secure URL
     encrypted_url = f"http://127.0.0.1:8000/client/verify?token={token}"
-    
     return {"url": encrypted_url, "message": "Success"}
 
 if __name__ == "__main__":
