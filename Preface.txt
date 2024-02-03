@@ -1,0 +1,9 @@
+Couldn't Write test cases due to some time constraints.
+However, this can be tested using frameworks like pytest or manually through postman by varying input fields and body for different test cases.
+
+
+For deployment in production environment, I would prefer using docker to create a container image of this code, and then deploying it on cloud like AWS (amazon web services).
+For serverless architecture like AWS Lambda, we may have to modify the code using APIs of AWS SDK.
+
+Docker image can be created using the dockerfile which has all the relevant dependency and runtime information.
+
