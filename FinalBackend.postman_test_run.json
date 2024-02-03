@@ -1,0 +1,176 @@
+{
+	"id": "70843087-e45e-46b2-b635-75a4cc81204f",
+	"name": "Backend",
+	"timestamp": "2024-02-03T08:08:29.698Z",
+	"collection_id": "28333052-7c9e3009-32b2-4ef0-9798-94da575b910b",
+	"folder_id": 0,
+	"environment_id": "28333052-0aeae3cb-45fc-42d2-ad8f-4822ce9eb105",
+	"totalPass": 0,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-02-03T08:08:27.531Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "9a3e5a5d-9d4b-447c-b870-dc02b03a3e7d",
+			"name": "ops login",
+			"url": "http://127.0.0.1:8000/ops/login",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0e55b65e-a0b3-41c8-86ce-8f80f5af4358",
+			"name": "ops login with client",
+			"url": "http://127.0.0.1:8000/ops/login",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9be635f0-e48f-454f-be4f-47275e36fcf3",
+			"name": "ops file upload",
+			"url": "http://127.0.0.1:8000/ops/upload",
+			"time": 5,
+			"responseCode": {
+				"code": 422,
+				"name": "Unprocessable Entity"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d4e1ae8d-02ba-4e92-83b4-7c8a5240b813",
+			"name": "client login",
+			"url": "http://127.0.0.1:8000/client/login",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "bacf3ab3-03d1-4845-9515-fb7efc594175",
+			"name": "List uploaded files",
+			"url": "http://127.0.0.1:8000/client/list_uploaded_files",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e2fdbbdd-e6e1-4ce5-ad90-ced9d1465bd6",
+			"name": "encrypted download link",
+			"url": "http://127.0.0.1:8000/client/download/5d0fb0c8-4fe2-44c2-9df9-321a2ea23940",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "06a10ad5-f39b-434d-9eac-ecdeb6f124a8",
+			"name": "encrypted download link other user",
+			"url": "http://127.0.0.1:8000/client/download/5d0fb0c8-4fe2-44c2-9df9-321a2ea23940",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "Unauthorized"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 49,
+	"collection": {
+		"requests": [
+			{
+				"id": "9a3e5a5d-9d4b-447c-b870-dc02b03a3e7d",
+				"method": "POST"
+			},
+			{
+				"id": "0e55b65e-a0b3-41c8-86ce-8f80f5af4358",
+				"method": "POST"
+			},
+			{
+				"id": "9be635f0-e48f-454f-be4f-47275e36fcf3",
+				"method": "POST"
+			},
+			{
+				"id": "d4e1ae8d-02ba-4e92-83b4-7c8a5240b813",
+				"method": "POST"
+			},
+			{
+				"id": "bacf3ab3-03d1-4845-9515-fb7efc594175",
+				"method": "GET"
+			},
+			{
+				"id": "e2fdbbdd-e6e1-4ce5-ad90-ced9d1465bd6",
+				"method": "GET"
+			},
+			{
+				"id": "06a10ad5-f39b-434d-9eac-ecdeb6f124a8",
+				"method": "GET"
+			}
+		]
+	}
+}
